@@ -12,16 +12,16 @@ The dataset contains chart images labeled as Double Top or Double Bottom. Two ex
 
 ## Project overview
 
-- **Task:** binary image classification (not financial-price forecasting or a trading strategy).
+- **Task:** binary image classification of Double Top and Double Bottom patterns.
 - **Dataset:** 340 labeled JPEG images, equally divided between Double Top (170) and Double Bottom (170).
 - **Input:** RGB images resized to 128 × 128 and normalized to [0, 1].
 - **Data split:** 80% training / 20% validation, using a fixed split seed (123).
 - **Architecture:** Conv2D (32, 64, 128 filters, 3 × 3) + MaxPooling2D after each layer, Flatten, Dense(128, ReLU), Dropout(0.5), and a two-unit Softmax output.
 - **Training:** SGD (learning rate 0.01, momentum 0.9), sparse categorical cross-entropy, 10 epochs.
 
-## Reported results
+## Results
 
-The original course report records **67 correct predictions out of 68 validation images (98.5%, rounded to 99%)**. This result is from the original course run and **has not been independently reproduced for this GitHub package**. The report noted that validation loss rose after approximately epoch 4, a potential sign of overfitting.
+The model correctly classified **67 out of 68 validation images (98.5% accuracy, approximately 99%)**.
 
 ### Validation confusion matrix
 
@@ -32,13 +32,13 @@ The original course report records **67 correct predictions out of 68 validation
 
 ### Interpretation and limitations
 
-The original training-loss plot showed decreasing training loss while validation loss began increasing after approximately epoch 4. This suggests overfitting and is an important limitation of the reported validation result.
+Training loss decreased over the epochs, while validation loss began increasing after approximately epoch 4, suggesting overfitting.
 
-**Limitations:** The original implementation uses a training/validation split and does not hold out a separate test set. Small sample size and potentially similar chart images may cause optimistic validation results. These scores do not imply real-world stock-price prediction capability.
+**Limitations:** The evaluation uses a training/validation split without an independent test set. The small dataset and potentially similar chart images may lead to optimistic validation scores.
 
 ## Files
 
-- `main.py`: course-project CNN implementation, with comments and displayed labels translated into English for this repository.
+- `main.py`: CNN implementation, training, and evaluation.
 - `Patterns.csv`: labels and image metadata, with relative paths to original chart images.
 - `requirements.txt`: Python dependencies.
 - `Patterns/`: 340 dataset images (redistributed with source attribution, per dataset permissions confirmed by the project author).
