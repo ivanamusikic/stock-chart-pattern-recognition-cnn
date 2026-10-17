@@ -30,7 +30,7 @@ The model correctly classified **67 out of 68 validation images (98.5% accuracy,
 | Double Bottom | 38 | 1 |
 | Double Top | 0 | 29 |
 
-### Interpretation and limitations
+### Interpretation
 
 Training loss decreased over the epochs, while validation loss began increasing after approximately epoch 4, suggesting overfitting.
 
