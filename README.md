@@ -2,6 +2,14 @@
 
 An educational convolutional neural network (CNN) implemented in Python with TensorFlow/Keras to classify images of financial price charts as **Double Top** or **Double Bottom**. Developed independently as the CNN component of a university Neural Networks course project.
 
+## Example chart patterns
+
+The dataset contains chart images labeled as Double Top or Double Bottom. Two examples from the included Kaggle dataset are shown below.
+
+| Double Top | Double Bottom |
+|:---:|:---:|
+| ![Double Top chart example](Patterns/0_00012.jpg) | ![Double Bottom chart example](Patterns/1_0000_00126.jpg) |
+
 ## Project overview
 
 - **Task:** binary image classification (not financial-price forecasting or a trading strategy).
@@ -13,18 +21,24 @@ An educational convolutional neural network (CNN) implemented in Python with Ten
 
 ## Reported results
 
-The course report records **67 correct predictions out of 68 validation images (98.5%, rounded to 99%)**. This result is from the original course run and **has not been independently reproduced for this GitHub package**. The report noted that validation loss rose after approximately epoch 4, a potential sign of overfitting.
+The original course report records **67 correct predictions out of 68 validation images (98.5%, rounded to 99%)**. This result is from the original course run and **has not been independently reproduced for this GitHub package**. The report noted that validation loss rose after approximately epoch 4, a potential sign of overfitting.
+
+### Validation confusion matrix
 
 | Actual class | Predicted Double Bottom | Predicted Double Top |
 |---|---:|---:|
 | Double Bottom | 38 | 1 |
 | Double Top | 0 | 29 |
 
+### Interpretation and limitations
+
+The original training-loss plot showed decreasing training loss while validation loss began increasing after approximately epoch 4. This suggests overfitting and is an important limitation of the reported validation result.
+
 **Limitations:** The original implementation uses a training/validation split and does not hold out a separate test set. Small sample size and potentially similar chart images may cause optimistic validation results. These scores do not imply real-world stock-price prediction capability.
 
 ## Files
 
-- `main.py`: original university implementation (preserved as submitted).
+- `main.py`: course-project CNN implementation, with comments and displayed labels translated into English for this repository.
 - `Patterns.csv`: labels and image metadata, with relative paths to original chart images.
 - `requirements.txt`: Python dependencies.
 - `Patterns/`: 340 dataset images (redistributed with source attribution, per dataset permissions confirmed by the project author).
@@ -32,9 +46,9 @@ The course report records **67 correct predictions out of 68 validation images (
 
 ## Running locally
 
-1. Create a Python virtual environment and install the packages in `requirements.txt`.
+1. Create and activate a Python virtual environment, then run `pip install -r requirements.txt`.
 2. The dataset images are included in `Patterns/`. Keep that directory next to `main.py` and `Patterns.csv`.
-3. From the project root, run `python main.py`.
+3. From the project root, run `python main.py`. This starts training; TensorFlow must be supported by your Python environment.
 
 The script creates the class-organized `data/` folder, trains the model, and displays plots and a classification report. It is an interactive research script, not a deployed application.
 
