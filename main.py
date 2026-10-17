@@ -19,7 +19,7 @@ print(df["ClassName"].value_counts())
 # Visualize the class distribution
 plt.figure(figsize=(6,4))
 sns.countplot(x="ClassName", data=df)
-plt.title("Broj uzoraka po klasama")
+plt.title("Number of samples per class")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
@@ -61,7 +61,7 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
 )
 
 class_names = train_ds.class_names
-print("Klase:", class_names)
+print("Classes:", class_names)
 
 # Scale pixel values from [0, 255] to [0, 1]
 normalization_layer = layers.Rescaling(1./255)
@@ -109,8 +109,8 @@ history = model.fit(
 plt.figure()
 plt.plot(history.history['loss'])
 plt.plot(history.history['val_loss'])
-plt.title('Greska tokom epoha')
-plt.xlabel('Epoha')
+plt.title('Training and validation loss')
+plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend(['Train', 'Validation'])
 plt.show()
@@ -129,8 +129,8 @@ plt.figure(figsize=(5,4))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
             xticklabels=class_names,
             yticklabels=class_names)
-plt.xlabel("Predikcija")
-plt.ylabel("Stvarna klasa")
+plt.xlabel("Predicted class")
+plt.ylabel("True class")
 plt.show()
 
 print(classification_report(y_true, y_pred, target_names=class_names))
@@ -166,7 +166,7 @@ for i in range(min(5, len(correct_images))):
     plt.title(f"True: {class_names[correct_labels[i]]}\nPred: {class_names[correct_preds[i]]}")
     plt.axis("off")
 
-plt.suptitle("Primeri dobro klasifikovanih slika")
+plt.suptitle("Correctly classified images")
 plt.show()
 
 plt.figure(figsize=(10,5))
@@ -177,5 +177,5 @@ for i in range(min(5, len(wrong_images))):
     plt.title(f"True: {class_names[wrong_labels[i]]}\nPred: {class_names[wrong_preds[i]]}")
     plt.axis("off")
 
-plt.suptitle("Primeri pogrešno klasifikovanih slika")
+plt.suptitle("Misclassified images")
 plt.show()
