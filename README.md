@@ -34,7 +34,6 @@ The model correctly classified **67 out of 68 validation images (98.5% accuracy,
 
 Training loss decreased over the epochs, while validation loss began increasing after approximately epoch 4, suggesting overfitting.
 
-**Limitations:** The evaluation uses a training/validation split without an independent test set. The small dataset and potentially similar chart images may lead to optimistic validation scores.
 
 ## Files
 
